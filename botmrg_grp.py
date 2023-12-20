@@ -25,17 +25,17 @@ app = Client("gemini_ai", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 async def say(_, message: Message):
     try:
         i = await message.reply_text("<code>Please Wait...</code>")
-        
-        
+
+
         if len(message.command) > 1:
-         prompt = message.text.split(maxsplit=1)[1]
+            prompt = message.text.split(maxsplit=1)[1]
         elif message.reply_to_message:
          prompt = message.reply_to_message.text
         else:
-         await message.reply_text(
-            f"<b>Usage: </b><code>/ask [prompt/reply to message]</code>"
-        )
-         return
+            await message.reply_text(
+                "<b>Usage: </b><code>/ask [prompt/reply to message]</code>"
+            )
+            return
 
         chat = model_text.start_chat()
         response = chat.send_message(prompt)

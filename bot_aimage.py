@@ -22,7 +22,10 @@ app = Client("gemini_ai_image", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_
 
 @app.on_message(filters.command("start") & filters.private)
 async def start(_, message):
-    await message.reply_text(f"Use: /get [Reply to image] to get details of it", parse_mode=enums.ParseMode.MARKDOWN)
+    await message.reply_text(
+        "Use: /get [Reply to image] to get details of it",
+        parse_mode=enums.ParseMode.MARKDOWN,
+    )
 
 @app.on_message(filters.command("get") & filters.private)
 async def say(_, message: Message):
